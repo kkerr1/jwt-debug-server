@@ -8,6 +8,9 @@
   "scripts" : {
     "start": "node src/main.js"
   },
+  "engines": {
+    "node": "6.9.0"
+  },
   "dependencies": {
     "express": "^4.14.0",
     "express-jwt": "^5.1.0"
