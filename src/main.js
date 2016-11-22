@@ -8,13 +8,13 @@ const keypath = path.resolve("ookla-extracts.pem");
 
 let secret;
 fs.access(keypath, fs.constants.R_OK, (err) => {
-  secret = err ? secret = fs.readFileSync(keypath) : process.env.PUBLIC_KEY;
+  secret = err ? secret = process.env.PUBLIC_KEY : fs.readFileSync(keypath);
+
+  app.use(jwt({ secret, algorithms: ["RS256"] }));
+
+  app.get("/", (req, res) => {
+    res.send(`JWT VERIFIED! PAYLOAD: \n ${JSON.stringify(req.user)}`);
+  });
+
+  app.listen(8000);
 });
-
-app.use(jwt({ secret, algorithms: ["RS256"] }));
-
-app.get("/", (req, res) => {
-  res.send(`JWT VERIFIED! PAYLOAD: \n ${JSON.stringify(req.user)}`);
-});
-
-app.listen(8000);
