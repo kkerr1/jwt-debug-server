@@ -4,7 +4,7 @@ const app = express();
 const jwt = require("express-jwt");
 const fs = require("fs");
 const path = require("path");
-const keypath = path.resolve("ookla-extracts.pem");
+const keypath = path.resolve("public-key.pem");
 
 let secret;
 fs.access(keypath, fs.constants.R_OK, (err) => {
