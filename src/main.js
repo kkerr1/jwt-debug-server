@@ -4,7 +4,12 @@ const app = express();
 const jwt = require("express-jwt");
 const fs = require("fs");
 const path = require("path");
-const secret = fs.readFileSync(path.resolve("ookla-extracts.pem"));
+const keypath = path.resolve("ookla-extracts.pem");
+
+let secret;
+fs.access(keypath, fs.constants.R_OK, (err) => {
+  secret = err ? secret = fs.readFileSync(keypath) : process.env.PUBLIC_KEY;
+});
 
 app.use(jwt({ secret, algorithms: ["RS256"] }));
 
