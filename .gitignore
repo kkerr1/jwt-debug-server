@@ -1,0 +1,23 @@
+# Logs
+logs
+*.log
+
+# Temporary files directory
+server/tmp
+
+# Dependency directory
+node_modules
+
+# Keys
+*.pem
+*.key
+*.pub
+
+# Auth config
+server/config/auth.json
+
+# IDEs
+.idea
+*.sublime-*
+
+.DS_Store
