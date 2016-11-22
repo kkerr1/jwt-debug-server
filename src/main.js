@@ -16,5 +16,5 @@ fs.access(keypath, fs.constants.R_OK, (err) => {
     res.send(`JWT VERIFIED! PAYLOAD: \n ${JSON.stringify(req.user)}`);
   });
 
-  app.listen(8000);
+  app.listen(process.env.PORT || 8000);
 });
